@@ -19,7 +19,10 @@ public class ProducerDemo {
         KafkaProducer<String,String> kafka = new KafkaProducer<String, String>(props);
         ProducerRecord<String,String> record = new ProducerRecord<String, String>("first_topic", "Hello World");
 
+        kafka.send(record);
 
+        kafka.flush();
+        kafka.close();
         System.out.println("Java is running as expected");
     }
 }
